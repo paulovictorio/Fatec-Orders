@@ -1,24 +1,12 @@
-import Layout from "@/components/templates/UI/organisms/Layout";
-import { TextField } from "@mui/material";
+"use client";
+import EditTemplate from "@/components/templates/products/EditTemplate";
 
 interface ProductEditProps {
   params: { slug: string };
 }
 
 export const ProductEdit: React.FC<ProductEditProps> = ({ params }) => {
-  // <div>{params.slug}</div>
-
-  // "descricao": "Bolacha",
-  // "marca": "Trakinas",
-  // "valor": 1.99,
-  // "peso_gramas": 100,
-  // "sabor": "morango"
-
-  return (
-    <Layout>
-      <TextField name="description" label="Descrição" fullWidth />
-    </Layout>
-  );
+  return <EditTemplate />;
 };
 
 export default ProductEdit;

@@ -20,7 +20,7 @@ const Orders = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const response = await axios.get(`${env.apiBaseUrl}/pedido`);
+      const response = await axios.get(`${env.apiBaseUrl}/pedidos`);
 
       const orders = response.data.pedidos.map((order: any) => ({
         id: order.id,
