@@ -25,14 +25,6 @@ const EditTemplate: React.FC = ({  }) => {
 
   const { handleSubmit, values, handleChange, setFieldValue, errors } = formik;
 
-  // <div>{params.slug}</div>
-
-  // "descricao": "Bolacha",
-  // "marca": "Trakinas",
-  // "valor": 1.99,
-  // "peso_gramas": 100,
-  // "sabor": "morango"
-
   return (
     <Layout>
       <Box component="form" onSubmit={handleSubmit}>

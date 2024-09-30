@@ -7,16 +7,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Orders = () => {
-  const [rows, setRows] = useState([
-    {
-      id: 0,
-      date: "data",
-      cpf: 2,
-      payment_method: "prazo",
-      itens_qtd: 2,
-      total_value: 3,
-    },
-  ]);
+  const [rows, setRows] = useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {

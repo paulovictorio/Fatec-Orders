@@ -152,27 +152,43 @@ export default function CustomTable({ rows, headCells }: CustomTableProps) {
   };
 
   /* TableBody > TableRow */
-  const handleClick = (event: React.MouseEvent<unknown>, id: number, router: AppRouterInstance) => {
+  const handleClick = (
+  event: React.MouseEvent<unknown>, 
+  id: number, 
+  router: AppRouterInstance, 
+  tab: string
+) => {
+  // Redirecionar para a rota correta com base na aba
+  if (tab === '/products') {
     router.push(`/products/edit/${id}`);
+  } else if (tab === '/orders') {
+    router.push(`/orders/edit/${id}`);
+  }
 
-    console.log(`id: ${id}`);
-    const selectedIndex = selected.indexOf(id);
-    let newSelected: readonly number[] = [];
+  console.log(`id: ${id}`);
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
+  const selectedIndex = selected.indexOf(id);
+  let newSelected: readonly number[] = [];
+
+  // Atualiza o array 'selected' com base no clique
+  if (selectedIndex === -1) {
+    newSelected = newSelected.concat(selected, id);
+  } else if (selectedIndex === 0) {
+    newSelected = newSelected.concat(selected.slice(1));
+  } else if (selectedIndex === selected.length - 1) {
+    newSelected = newSelected.concat(selected.slice(0, -1));
+  } else if (selectedIndex > 0) {
+    newSelected = newSelected.concat(
+      selected.slice(0, selectedIndex),
+      selected.slice(selectedIndex + 1)
+    );
+  }
+
+  setSelected(newSelected);
+};
+  
+
+  
 
   /* TablePagination */
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -234,7 +250,7 @@ export default function CustomTable({ rows, headCells }: CustomTableProps) {
                 return (
                   <TableRow
                     hover
-                    onClick={(event) => handleClick(event, row.id, router)}
+                    onClick={(event) => handleClick(event, row.id, router, '/orders')}
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
