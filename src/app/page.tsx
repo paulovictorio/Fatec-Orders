@@ -1,21 +1,10 @@
 "use client";
 
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
-  // const [name, setName] = useState<string>("");
-
-  // useEffect(() => {
-  //   setName("não definido");
-  // }, []);
-
-  // useEffect(() => {
-  //   alert("O nome foi alterado!");
-  // }, [name]);
 
   return (
     <Container component="main" maxWidth="xs">

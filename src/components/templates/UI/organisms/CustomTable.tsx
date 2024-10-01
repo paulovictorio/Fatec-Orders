@@ -159,6 +159,7 @@ export default function CustomTable({ rows, headCells, editPath }: CustomTablePr
 ) => {
 
   router.push(`${editPath}/${id}`)
+  
   const selectedIndex = selected.indexOf(id);
   let newSelected: readonly number[] = [];
 

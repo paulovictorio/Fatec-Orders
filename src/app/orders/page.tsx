@@ -17,9 +17,9 @@ const Orders = () => {
         id: order.id,
         date: order.data,
         cpf: order.cpf,
-        payment_method: order.forma_pagamento,
-        itens_qtd: order.quantidade_itens,
-        total_value: order.valor_total,
+        paymentMethod: order.formaPagamento,
+        itensQtd: order.quantidadeItens,
+        totalValue: order.valorTotal,
       }));
 
       setRows(orders);
@@ -42,19 +42,19 @@ const Orders = () => {
       label: "Cpf",
     },
     {
-      id: "payment_method",
+      id: "paymentMethod",
       numeric: false,
       disablePadding: false,
       label: "Forma de Pagamento",
     },
     {
-      id: "itens_qtd",
+      id: "itensQtd",
       numeric: true,
       disablePadding: false,
       label: "Quantidade",
     },
     {
-      id: "total_value",
+      id: "totalValue",
       numeric: true,
       disablePadding: false,
       label: "Valor Total",

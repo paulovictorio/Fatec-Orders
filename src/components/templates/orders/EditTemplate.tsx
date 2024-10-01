@@ -13,9 +13,9 @@ const EditTemplate: React.FC = ({  }) => {
     initialValues: {
         date: " ",
         cpf: 0,
-        payment_method: " ",
-        itens_qtd: 0,
-        total_value: 0,
+        paymentMethod: " ",
+        itensQtd: 0,
+        totalValue: 0,
       },
     validationSchema: OrderEditValidator,
     onSubmit: (values) => {
@@ -47,34 +47,35 @@ const EditTemplate: React.FC = ({  }) => {
           helperText={errors.cpf}
         />
         <Select 
-          name="payment_method" 
+          name="paymentMethod" 
           label="Forma de Pagamento" 
           fullWidth 
-          value={values.payment_method} 
-          onChange={(e) => setFieldValue("payment_method", e.target.value)}
-          error={!!errors.payment_method}>
+          value={values.paymentMethod} 
+          onChange={(e) => setFieldValue("paymentMethod", e.target.value)}
+          error={!!errors.paymentMethod}>
 
           <MenuItem value="debito">à vista</MenuItem>
           <MenuItem value="credito">prazo</MenuItem>
+          <MenuItem value="pix">PIX</MenuItem>
         
         </Select>
         <TextField 
-          name="itens_qtd" 
+          name="itensQtd" 
           label="Quantidade de Itens" 
           fullWidth 
-          value={values.itens_qtd} 
+          value={values.itensQtd} 
           onChange={handleChange} 
-          error={!!errors.itens_qtd}
-          helperText={errors.itens_qtd} 
+          error={!!errors.itensQtd}
+          helperText={errors.itensQtd} 
         />
         <TextField 
-          name="total_value" 
+          name="totalValue" 
           label="Valor Total" 
           fullWidth 
-          value={values.total_value}
+          value={values.totalValue}
           onChange={handleChange} 
-          error={!!errors.total_value}
-          helperText={errors.total_value}>
+          error={!!errors.totalValue}
+          helperText={errors.totalValue}>
             
         </TextField>
 
