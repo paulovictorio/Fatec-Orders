@@ -4,12 +4,14 @@ import { IProduct } from "@/Interfaces/IProduct";
 import { ProductEditValidator } from "@/validators/ProductEditValidator";
 import { TextField, Select, MenuItem, Button, Box } from "@mui/material";
 import { useFormik } from "formik";
+import { useEffect } from "react";
 
+interface EditTemplateProps {
+  product?: IProduct;
+}
 
-const EditTemplate: React.FC = ({  }) => {
-
+const EditTemplate: React.FC<EditTemplateProps> = ({ product }) => {
   const formik = useFormik<IProduct>({
-
     initialValues: {
         description: "",
         brand: "",
@@ -17,14 +19,23 @@ const EditTemplate: React.FC = ({  }) => {
         value: 0,
         weight: 0,
     },
+
     validationSchema: ProductEditValidator,
     onSubmit: (values) => {
       console.log(values);
     }
   });
 
-  const { handleSubmit, values, handleChange, setFieldValue, errors } = formik;
+  const { handleSubmit, values, handleChange, setFieldValue, errors, setValues } = formik;
 
+
+  useEffect(() => {
+    if(!product) return;
+
+    const {id, ...prod} = product;
+
+    setValues(prod);
+  }, [product, setValues]);
   return (
     <Layout>
       <Box component="form" onSubmit={handleSubmit}>

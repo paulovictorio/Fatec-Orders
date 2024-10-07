@@ -3,6 +3,7 @@
 import CustomTable from "@/components/templates/UI/organisms/CustomTable";
 import Layout from "@/components/templates/UI/organisms/Layout";
 import { env } from "@/config/env";
+import { IProduct } from "@/Interfaces/IProduct";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
