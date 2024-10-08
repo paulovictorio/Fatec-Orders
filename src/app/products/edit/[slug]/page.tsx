@@ -1,23 +1,21 @@
 "use client";
 import EditTemplate from "@/components/templates/products/EditTemplate";
 import { IProduct } from "@/Interfaces/IProduct";
-import axios from "axios";
 import { env } from "@/config/env";
 import { useEffect, useState } from "react";
+import { withDataFetching } from "@/components/templates/HOCS/withDataFetching";
 
 interface ProductEditProps {
-  params: { slug: string };
+  params?: { slug: string };
+  data: any;
+  error: string;
 }
 
- const ProductEdit: React.FC<ProductEditProps> = ({ params }) => {
+ const ProductEdit: React.FC<ProductEditProps> = ({ params, data }) => {
     const [product, setProduct] = useState<IProduct>();
 
     useEffect(() => {
-      const fetchData = async () => {
-        if(!params.slug) return;
-        const response = await axios.get(
-          `${env.apiBaseUrl}/produto/${params.slug}`
-        );
+        if(!data) return;
         const { 
             id,
             descricao: description, 
@@ -25,7 +23,7 @@ interface ProductEditProps {
             valor: value, 
             peso_gramas: weight, 
             sabor: flavor, 
-          } = response.data.produto;
+          } = data.produto;
 
         setProduct({
           id,
@@ -35,11 +33,10 @@ interface ProductEditProps {
           value, 
           weight
         });
-      };
+      }, [data]);
 
-    fetchData();
-  }, [params.slug]);
-  return <EditTemplate product={product} />;
-};
+      return <EditTemplate product={product} />;
+  };
 
-export default ProductEdit;
+
+export default withDataFetching(`${env.apiBaseUrl}/produto`)(ProductEdit);
