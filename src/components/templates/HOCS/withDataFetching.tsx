@@ -19,7 +19,7 @@ export const withDataFetching = (url: string) =>
             } catch (_error) {
                 setError("Erro ao tentar realizar a consulta");
             } finally{
-                //setIsLoading(false);
+                setIsLoading(false);
             }
             };
           fetchData();
